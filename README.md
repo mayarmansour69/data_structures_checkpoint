@@ -1,3 +1,4 @@
+# Data structure checkpoint
 For problem 1 i write an algorithm that find the sum of all distinct elements from the set. In other words, find the sum of all elements which are present in either of the given set.
 
 
