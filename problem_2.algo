@@ -1,0 +1,42 @@
+ALGORITHM DotProductAndOrthogonalityCheck
+VAR
+    Vectors: Table [0..N, 0..M] of real;
+    n, m, i, j: Integers;
+    dot_product_result: Real;
+
+PROCEDURE dot_product(v1, v2: Table [0..M] of real; VAR ps: Real)
+BEGIN
+    ps := 0;
+    FOR i FROM 0 TO M-1 DO
+        ps := ps + v1[i] * v2[i];
+    END_FOR
+END
+
+BEGIN
+    Write("Enter the number of vectors (n): ");
+    Read(n);
+
+    Write("Enter the size of vectors (m): ");
+    Read(m);
+
+    // Input for vectors
+    FOR i FROM 0 TO N-1 DO
+        FOR j FROM 0 TO M-1 DO
+            Write("Enter element for vector ", i + 1, ": ");
+            Read(Vectors[i, j]);
+        END_FOR
+    END_FOR
+
+    // Orthogonality check
+    FOR i FROM 0 TO N-1 DO
+        FOR j FROM i + 1 TO N-1 DO
+            dot_product(Vectors[i], Vectors[j], dot_product_result);
+
+            IF dot_product_result = 0 THEN
+                Write("Vectors ", i + 1, " and ", j + 1, " are orthogonal.");
+            ELSE
+                Write("Vectors ", i + 1, " and ", j + 1, " are not orthogonal.");
+            END_IF
+        END_FOR
+    END_FOR
+END

@@ -1,0 +1,44 @@
+ALGORITHM SumOfDistinctElements
+VAR
+    Set1: Table [0..N] of integers;
+    Set2: Table [0..M] of integers;
+    n, m, element, sum_result: Integers;
+
+BEGIN
+    Write("Enter size of Set1: ");
+    Read(n);
+
+    FOR i FROM 0 TO N-1 DO
+        Write("Enter element for Set1: ");
+        Read(element);
+        Set1[i] := element;
+    END_FOR
+
+    Write("Enter size of Set2: ");
+    Read(m);
+
+    FOR i FROM 0 TO M-1 DO
+        Write("Enter element for Set2: ");
+        Read(element);
+        Set2[i] := element;
+    END_FOR
+
+    // Processing
+    sum_result := 0;
+
+    FOR i FROM 0 TO N-1 DO
+        IF Set1[i] NOT IN Set2 THEN
+            sum_result := sum_result + Set1[i];
+        END_IF
+    END_FOR
+
+    FOR i FROM 0 TO M-1 DO
+        IF Set2[i] NOT IN Set1 THEN
+            sum_result := sum_result + Set2[i];
+        END_IF
+    END_FOR
+
+    // Output
+    Write("The sum of distinct elements is: ");
+    Write(sum_result)
+END
